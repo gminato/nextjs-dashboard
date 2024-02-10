@@ -229,3 +229,43 @@ export async function getUser(email: string) {
     throw new Error('Failed to fetch user.');
   }
 }
+
+// totalPaidInvoices} type="collected" /> */}
+// <Card title="Pending" value={totalPendingInvoices} type="pending" /> */
+// <Card title="Total Invoices" value={numberOfInvoices}
+
+export async function fetchTotalPaidInvoices() {
+  try{
+    sql`SELECT count(status) FROM INVOICES where status = 'paid'`;
+  } catch(err) {
+    console.error('Failded to fetch Invoices');
+    throw new Error('Failed to fetch Invoices.');
+  }
+}
+
+export async function fetchTotalPendingInvoices() {
+  try{
+    sql`SELECT count(status) FROM INVOICES where status = 'pending'`;
+  } catch(err) {
+    console.error('Failded to fetch Invoices');
+    throw new Error('Failed to fetch Invoices.');
+  }
+}
+
+export async function fetchNumberOfInvoices() {
+  try{
+    sql`SELECT count(status) FROM INVOICES`;
+  } catch(err) {
+    console.error('Failded to fetch Invoices');
+    throw new Error('Failed to fetch Invoices.');
+  }
+}
+
+export async function fetchNumberofCustomer()  {
+  try{
+    sql`SELECT count(*) FROM CUSTOMERS`;
+  } catch(err) {
+    console.error('Failded to fetch customers');
+    throw new Error('Failed to fetch customers.');
+  }
+}
