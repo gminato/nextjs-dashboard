@@ -10,10 +10,11 @@ export default function Search({ placeholder }: { placeholder: string }) {
   const searchParams = useSearchParams()
   const pathname = usePathname();
   const { replace } = useRouter();
-  
+
   const  handleSearch = useDebouncedCallback((searchString:string ) =>{
     console.log(searchString);
-    const params = new URLSearchParams(searchParams)
+    const params = new URLSearchParams(searchParams);
+    params.set('page','1');
     if(searchString) {
       params.set('query',searchString);
     } else {
